@@ -341,6 +341,56 @@ export default function Index() {
         .sec-sub { font-size: 16px; color: rgba(212,207,199,0.65); max-width: 58ch; line-height: 1.65; margin: 0; }
         .gold-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold2), var(--gold)); border-radius: 2px; margin-bottom: 16px; }
 
+        /* HERO VISUAL RIGHT */
+        .hero-visual { display: flex; align-items: center; justify-content: center; }
+        .hero-visual-inner {
+          width: 100%;
+          background: rgba(15,36,68,0.65);
+          backdrop-filter: blur(18px);
+          border: 1px solid var(--card-border);
+          border-radius: 22px;
+          padding: 28px 24px;
+          box-shadow: 0 24px 64px rgba(0,0,0,0.38);
+          display: flex; flex-direction: column; gap: 20px;
+          position: relative; overflow: hidden;
+        }
+        .hero-visual-inner::before {
+          content: '';
+          position: absolute; top: -60px; right: -60px;
+          width: 220px; height: 220px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(201,169,110,0.10), transparent 70%);
+          pointer-events: none;
+        }
+        .hv-badge {
+          display: inline-flex; align-items: center; gap: 8px;
+          font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+          color: var(--gold);
+        }
+        .hv-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #3dba67; box-shadow: 0 0 0 4px rgba(61,186,103,0.18); flex: 0 0 auto; }
+        .hv-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+        .hv-stat {
+          background: rgba(201,169,110,0.07); border: 1px solid var(--line);
+          border-radius: 14px; padding: 14px 10px; text-align: center;
+        }
+        .hv-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 32px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
+        .hv-lbl { font-size: 11.5px; color: var(--muted); display: block; margin-top: 5px; line-height: 1.3; }
+        .hv-services { display: flex; flex-wrap: wrap; gap: 8px; }
+        .hv-chip {
+          display: inline-flex; align-items: center; gap: 6px;
+          padding: 6px 12px; border-radius: 999px;
+          background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.15);
+          font-size: 13px; font-weight: 500; color: rgba(212,207,199,0.85);
+          transition: border-color 0.18s, background 0.18s;
+        }
+        .hv-chip:hover { border-color: var(--gold); background: rgba(201,169,110,0.08); color: var(--gold); }
+        .hv-cta-note {
+          display: flex; align-items: center; gap: 8px;
+          font-size: 13px; color: var(--muted);
+          padding: 12px 14px;
+          background: rgba(201,169,110,0.06); border: 1px solid var(--line);
+          border-radius: 12px;
+        }
+
         /* SERVICES */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 36px; }
         @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -554,6 +604,49 @@ export default function Index() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* HERO RIGHT — визуальный блок */}
+              <div className="hero-visual sr sr-in">
+                <div className="hero-visual-inner">
+                  <div className="hv-badge">
+                    <span className="hv-badge-dot" />
+                    Ведём дела с 2013 года
+                  </div>
+                  <div className="hv-stats">
+                    <div className="hv-stat">
+                      <span className="hv-num">500+</span>
+                      <span className="hv-lbl">успешных дел</span>
+                    </div>
+                    <div className="hv-stat">
+                      <span className="hv-num">12</span>
+                      <span className="hv-lbl">лет практики</span>
+                    </div>
+                    <div className="hv-stat">
+                      <span className="hv-num">98%</span>
+                      <span className="hv-lbl">клиентов довольны</span>
+                    </div>
+                  </div>
+                  <div className="hv-services">
+                    {[
+                      { icon: "MapPin", label: "Земля и участки" },
+                      { icon: "Home", label: "Гаражи / ГСК" },
+                      { icon: "FileText", label: "Сделки" },
+                      { icon: "Building2", label: "Ипотека" },
+                      { icon: "Scale", label: "Споры и суды" },
+                      { icon: "Users", label: "Семейное право" },
+                    ].map((s) => (
+                      <div className="hv-chip" key={s.label}>
+                        <Icon name={s.icon} size={13} />
+                        {s.label}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hv-cta-note">
+                    <Icon name="MessageCircle" size={14} />
+                    Живой чат — ответим прямо сейчас
+                  </div>
                 </div>
               </div>
 
