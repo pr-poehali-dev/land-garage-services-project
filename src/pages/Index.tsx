@@ -557,32 +557,6 @@ export default function Index() {
                 </div>
               </div>
 
-              <aside className="form-card sr sr-in" id="consult">
-                <div className="form-card-head">
-                  <h3>Бесплатная консультация</h3>
-                  <p>Опишите ситуацию в 1–2 предложениях — предложим план действий.</p>
-                </div>
-                <div className="form-card-body">
-                  {submitted && (
-                    <div className="f-ok">
-                      <Icon name="CheckCircle2" size={18} />
-                      Заявка принята! Свяжемся в ближайшее время.
-                    </div>
-                  )}
-                  <form onSubmit={handleSubmit}>
-                    <label className="f-label">Ваше имя</label>
-                    <input className="f-input" type="text" required placeholder="Например, Ирина" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-                    <label className="f-label">Телефон</label>
-                    <input className="f-input" type="tel" required placeholder="+7 ___ ___-__-__" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
-                    <label className="f-label">Коротко: что нужно решить?</label>
-                    <textarea className="f-input f-textarea" required placeholder="Например: оформить землю, гараж по амнистии, сопровождение сделки..." value={form.msg} onChange={(e) => setForm({ ...form, msg: e.target.value })} />
-                    <button className="lbtn lbtn-gold lbtn-full" type="submit" style={{ marginTop: "14px" }}>
-                      Получить консультацию →
-                    </button>
-                    <p className="f-fine">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
-                  </form>
-                </div>
-              </aside>
             </div>
           </div>
         </section>
@@ -751,6 +725,40 @@ export default function Index() {
                   <div className="faq-ans">{f.a}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONSULT FORM */}
+        <section className="lsection" id="consult">
+          <div className="lcontainer">
+            <div style={{ maxWidth: 600, margin: "0 auto" }}>
+              <span className="sec-label sr" style={{ textAlign: "center", display: "block" }}>Бесплатно</span>
+              <div className="gold-divider sr" style={{ margin: "0 auto 16px" }} />
+              <h2 className="sec-h2 sr" style={{ textAlign: "center" }}>Бесплатная консультация</h2>
+              <p className="sec-sub sr" style={{ textAlign: "center", margin: "0 auto 28px" }}>Опишите ситуацию в 1–2 предложениях — предложим план действий.</p>
+              <div className="form-card sr">
+                <div className="form-card-body" style={{ padding: "24px 26px" }}>
+                  {submitted && (
+                    <div className="f-ok">
+                      <Icon name="CheckCircle2" size={18} />
+                      Заявка принята! Свяжемся в ближайшее время.
+                    </div>
+                  )}
+                  <form onSubmit={handleSubmit}>
+                    <label className="f-label">Ваше имя</label>
+                    <input className="f-input" type="text" required placeholder="Например, Ирина" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                    <label className="f-label">Телефон</label>
+                    <input className="f-input" type="tel" required placeholder="+7 ___ ___-__-__" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                    <label className="f-label">Коротко: что нужно решить?</label>
+                    <textarea className="f-input f-textarea" required placeholder="Например: оформить землю, гараж по амнистии, сопровождение сделки..." value={form.msg} onChange={(e) => setForm({ ...form, msg: e.target.value })} />
+                    <button className="lbtn lbtn-gold lbtn-full" type="submit" style={{ marginTop: "14px" }}>
+                      Получить консультацию →
+                    </button>
+                    <p className="f-fine">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </section>
